@@ -64,8 +64,10 @@ exports.postLogin =async (req,res,next)=>{
                 expiresIn:'3600000'
             }
         )
-            var url = req.protocol + '://' + req.get('host');
+            // var url = req.protocol + '://' + req.get('host');
+            var url = 'https://todo-isoft.herokuapp.com/';
             const imageUrl = url+'/images/'+loadedUser.imageUrl;
+
             console.log('imageUrl',imageUrl)
             console.log('loadeduser', loadedUser)
             res.status(201).json({
