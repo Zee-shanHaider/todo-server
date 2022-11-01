@@ -66,6 +66,7 @@ exports.postLogin =async (req,res,next)=>{
         )
             var url = req.protocol + '://' + req.get('host');
             const imageUrl = url+'/images/'+loadedUser.imageUrl;
+            console.log('imageUrl',imageUrl)
             console.log('loadeduser', loadedUser)
             res.status(201).json({
                 'result': 'User successfully loged in',
