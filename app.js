@@ -59,7 +59,7 @@ const fileStorage=multer.diskStorage({
 app.use(express.json())
 
 app.use((req,res,next)=>{
-    res.setHeader('Access_Control_Allow_Origin', '*');
+    res.set('Access_Control_Allow_Origin', '*');
     res.setHeader('Access_Control_Allow_Methods', 'GET, PUT, POST, DELETE, PATCH');
     res.setHeader('Access_Control_Allow_Headers', 'Content_Type, Authorization');
     next()
