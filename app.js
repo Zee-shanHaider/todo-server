@@ -16,7 +16,12 @@ require('dotenv').config({path: 'config.env'});
 const MongoDBURI = process.env.MongoDBURI;
 
 
-app.use(helmet())
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+    // ...
+  })
+);
 app.use(compression())
 
 const multer = require('multer')
