@@ -65,7 +65,7 @@ exports.postLogin =async (req,res,next)=>{
             }
         )
             // var url = req.protocol + '://' + req.get('host');
-            var url = 'https://todo-isoft.herokuapp.com/';
+            var url = 'https://todo-isoft.herokuapp.com';
             const imageUrl = url+'/images/'+loadedUser.imageUrl;
 
             console.log('imageUrl',imageUrl)
