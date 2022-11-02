@@ -44,6 +44,7 @@ exports.postSignup = async (req,res,next)=>{
 }
 
 exports.postLogin =async (req,res,next)=>{
+    console.log('image url', req.url)
     const email = req.body.email;
     const password = req.body.password;
     const user =await User.findOne({email: email});
