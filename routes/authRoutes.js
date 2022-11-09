@@ -30,6 +30,10 @@ router.post('/api/signup',  [
     
 ] ,authController.postSignup);
 
+router.get("/", (req, res) =>{
+    res.send("Home page for TODO app")
+})
+
 router.get('/api',async (req,res)=>{
     const token = req.get('Authorization');
     try{
