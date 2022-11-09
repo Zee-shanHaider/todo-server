@@ -16,12 +16,7 @@ require('dotenv').config({path: 'config.env'});
 const MongoDBURI = process.env.MongoDBURI;
 
 
-app.use(
-  helmet({
-    crossOriginEmbedderPolicy: false,
-    // ...
-  })
-);
+
 app.use(compression())
 
 const multer = require('multer')
@@ -71,6 +66,11 @@ app.use((req,res,next)=>{
     
 })
 app.use(cors())
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false,
+  })
+);
 
 const mongoose = require('mongoose');
 
