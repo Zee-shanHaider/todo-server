@@ -5,8 +5,6 @@ const {validationResult} = require('express-validator/check')
 
 
 exports.postSignup = async (req,res,next)=>{
-    console.log(req.body)
-    const image = req.file;
     const errors = validationResult(req);
     console.log('validation errors',errors.array().length >0)
     if(errors.array().length > 0){
@@ -17,7 +15,6 @@ exports.postSignup = async (req,res,next)=>{
         const email = req.body.email;
         const password = req.body.password;
         const image = req.file;
-        console.log('image',image)
         const imageUrl = image.filename;
         const hashedPassword =await bcrypt.hash(password, 12)
        
@@ -34,7 +31,6 @@ exports.postSignup = async (req,res,next)=>{
                 return res.status(200).send({status: 'ok'})
             }
     }
-    
     catch(error){
         console.log(error)
     //   res.status(400).send({msg:error.message})
@@ -44,7 +40,6 @@ exports.postSignup = async (req,res,next)=>{
 }
 
 exports.postLogin =async (req,res,next)=>{
-    console.log('image url', req.url)
     const email = req.body.email;
     const password = req.body.password;
     const user =await User.findOne({email: email});
@@ -65,11 +60,9 @@ exports.postLogin =async (req,res,next)=>{
                 expiresIn:'3600000'
             }
         )
-            var url = req.protocol + '://' + req.get('host');
-            const imageUrl = url+'/images/'+loadedUser.imageUrl;
-
-            console.log('imageUrl',imageUrl)
-            console.log('loadeduser', loadedUser)
+            // var url = req.protocol + '://' + req.get('host');
+            // const imageUrl = url+'/images/'+loadedUser.imageUrl;
+            const imageUrl = 'http://localhost:8080/images/'+loadedUser.imageUrl;
             res.status(201).json({
                 'result': 'User successfully loged in',
                 token:token,
@@ -86,7 +79,6 @@ exports.postLogin =async (req,res,next)=>{
 
 exports.logout = (req,res,next)=>{
 
-    
     req.session.destroy(err => {
         if(err){
             console.log(err);

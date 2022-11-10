@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer')
 const path = require('path')
 const helmet = require('helmet')
 const app = express();
@@ -19,7 +20,6 @@ const MongoDBURI = process.env.MongoDBURI;
 
 app.use(compression())
 
-const multer = require('multer')
 const folderDirectory='./files'
 const fileStorage=multer.diskStorage({
     destination:function(req,file,cb){
@@ -58,13 +58,13 @@ const fileStorage=multer.diskStorage({
 
 app.use(express.json())
 
-// app.use((req,res,next)=>{
-//     res.setHeader('Access_Control_Allow_Origin', '*');
-//     res.setHeader('Access_Control_Allow_Methods', 'GET, PUT, POST, DELETE, PATCH');
-//     res.setHeader('Access_Control_Allow_Headers', 'Content_Type, Authorization');
-//     next()
+app.use((req,res,next)=>{
+    res.setHeader('Access_Control_Allow_Origin', '*');
+    res.setHeader('Access_Control_Allow_Methods', 'GET, PUT, POST, DELETE, PATCH');
+    res.setHeader('Access_Control_Allow_Headers', 'Content_Type, Authorization');
+    next()
     
-// })
+})
 app.use(cors())
 // app.use(
 //   helmet({
@@ -104,7 +104,7 @@ app.use((error,req,res,next)=>{
         MongoDBURI
     )
     .then(res=>{
-        app.listen(port,()=>{
+        app.listen(8080,()=>{
             console.log('Database Connected Successfully!')
         })
     })
