@@ -60,7 +60,7 @@ exports.postLogin =async (req,res,next)=>{
                 expiresIn:'3600000'
             }
         )
-            var url = req.protocol + '://' + req.get('host');
+            var url =  'https'+ '://' + req.get('host');
             const imageUrl = url+'/images/'+loadedUser.imageUrl;
             res.status(201).json({
                 'result': 'User successfully loged in',
