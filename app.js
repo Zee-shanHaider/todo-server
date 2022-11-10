@@ -66,12 +66,8 @@ app.use((req,res,next)=>{
     
 })
 app.use(cors())
-// app.use(
-//   helmet({
-//     crossOriginEmbedderPolicy: false,
-//   })
-//   );
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+
+// app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 
 const mongoose = require('mongoose');
 
