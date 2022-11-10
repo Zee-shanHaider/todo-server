@@ -104,7 +104,7 @@ app.use((error,req,res,next)=>{
         MongoDBURI
     )
     .then(res=>{
-        app.listen(8080,()=>{
+        app.listen(port,()=>{
             console.log('Database Connected Successfully!')
         })
     })
