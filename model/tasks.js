@@ -12,7 +12,7 @@ const taskSchema = new Schema({
         required: true
     },
     todoDate:{
-        type: Date,
+        type: String,
         required: true
     },
     creator:{

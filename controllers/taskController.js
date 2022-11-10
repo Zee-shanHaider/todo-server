@@ -1,16 +1,17 @@
 const Task = require('../model/tasks');
 const User = require('../model/user')
+const moment = require('moment')
 exports.postTask=async (req, res, next)=>{
 
     const title = req.body.title;
     const date = req.body.date;
-    console.log('date', date)
+    const momentDate = moment(date).format("MM-DD-YYYY")
     const status = req.body.status;
     try{
         const task = new Task({
             title: title,
             status: status,
-            todoDate: date,
+            todoDate: momentDate,
             creator: req.userId
         })
         const response =await task.save()
