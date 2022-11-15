@@ -18,6 +18,10 @@ router.put('/api/updateTask/:taskId', isAuth, taskController.editTask);
 
 router.delete('/api/deleteDoneTasks',isAuth ,taskController.deleteDoneTasks)
 
+router.get('/api/doneTasks',isAuth, taskController.getDoneTasks)
 
+router.get('/api/pendingTasks', isAuth,taskController.getTodoTasks)
+
+router.get('/api/getTodayTasks',isAuth, taskController.getTodayTasks)
 
 module.exports = router;

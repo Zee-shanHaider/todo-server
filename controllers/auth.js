@@ -32,11 +32,8 @@ exports.postSignup = async (req,res,next)=>{
             }
     }
     catch(error){
-        console.log(error)
-    //   res.status(400).send({msg:error.message})
+      res.status(400).send(error)
     }
-
-
 }
 
 exports.postLogin =async (req,res,next)=>{
